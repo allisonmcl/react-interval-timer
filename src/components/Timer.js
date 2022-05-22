@@ -1,21 +1,15 @@
 import { useState, useEffect } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-
+import TotalTimer from './TotalTimer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import Button from './UI/Button'; 
 const Timer = (props) => {
   let audio = new Audio('/beep-sound-8333.mp3');
   const intervals = props.intervals;
   const totalDuration = intervals.reduce((acc, a) => {
     return acc + a.time
   }, 0)
-
-  const formatSeconds = (time) => {
-    let minutes = Math.floor(time / 60);
-    let seconds = time - minutes * 60;
-    let hours = Math.floor(time / 3600);
-    return (hours ? + ':': '') + 
-      (minutes < 10 ? '0' : '') + 
-      minutes+':' + (seconds < 10 ? '0' : '') + seconds; 
-  }
 
   const [timerState, setTimerState] = useState({
     currInterval: 0,
@@ -29,7 +23,7 @@ const Timer = (props) => {
     const newTotalElapsedTime = intervals
       .slice(0,currInterval)
       .reduce((prev, curr) => {
-        return prev + curr.time;
+        return prev + curr.time; 
       }, 0);
     return newTotalElapsedTime;
   }
@@ -88,22 +82,18 @@ const Timer = (props) => {
       }
     })
   }
-
+  const isFirstInt = timerState.currInterval === 0;
   const title = intervals[timerState.currInterval].title;
   const isLastActive = timerState.currInterval === intervals.length - 1 || false;
   const isRunning = timer != null && !timerState.paused;
   const duration = intervals[timerState.currInterval].time;
-  const width = timerState.totalElapsedTime / totalDuration * 100;
   return (
     
     <div className="timer">
       <h1>{title}</h1>
-      <button disabled={isRunning} onClick={timerStart}>Start</button>
-      <button disabled={!isRunning} onClick={timerPause}>Pause</button>
-      <button disabled={isLastActive} onClick={nextInt}>Skip to next</button>
-      <button onClick={prevInt}>Prev</button>
-
       <div className="circle">
+        <Button attributes={{disabled: isFirstInt , onClick: prevInt} }><FontAwesomeIcon size="lg" icon={solid('backward')} /></Button>
+
         <CountdownCircleTimer
           isPlaying={!timerState.paused}
           duration={duration}
@@ -123,12 +113,13 @@ const Timer = (props) => {
         >
           {({ remainingTime }) => remainingTime}
         </CountdownCircleTimer>
+        <Button attributes={{disabled: isLastActive , onClick: nextInt} }><FontAwesomeIcon icon={solid('forward')} /></Button>
       </div>
 
-      {formatSeconds(timerState.totalElapsedTime) +'/'+ formatSeconds(totalDuration)}
-      <div className="test1">
-        <div className="test" style={{width: width + '%'}}></div>
-      </div>
+      <Button attributes={{disabled: isRunning , onClick: timerStart} }><FontAwesomeIcon icon={solid('play')} /></Button>
+      <Button attributes={{disabled: !isRunning , onClick: timerPause} }><FontAwesomeIcon icon={solid('pause')} /></Button>
+
+      <TotalTimer elapsedTime={timerState.totalElapsedTime} totalDuration={totalDuration} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect }  from 'react';
+
 const NewTimer = (props) => {
   const activeInputRef = useRef();
   const restInputRef = useRef();

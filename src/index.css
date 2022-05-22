@@ -34,7 +34,15 @@ svg {
   margin: auto;
 }
 
+.circle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 30px;
+}
+
 .circle > div {
-  margin: 3em auto;
   text-align: center;
 }
