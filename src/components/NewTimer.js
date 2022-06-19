@@ -43,37 +43,56 @@ const NewTimer = (props) => {
     updatePreviewHandler()
   }, [])
   return (
-    <div className="new-timer" style={{ display: "flex" }}>
-      <form onSubmit={createTimerHandler}>
-        <label htmlFor="active">Active Interval</label>
-        <input onBlur={updatePreviewHandler} ref={activeInputRef} type="number" id="active" defaultValue="40"/>
-        <label htmlFor="rest">Rest Interval</label>
-        <input onBlur={updatePreviewHandler} ref={restInputRef} type="number" id="rest" defaultValue="20"/>
-        <hr />
-        <label htmlFor="exercises"># of Exercises</label>
-        <input onBlur={updatePreviewHandler} ref={exercisesInputRef} type="number" id="exercises" defaultValue="10"/>
-        <label htmlFor="sets">Sets per Exercise</label>
-        <input onBlur={updatePreviewHandler} ref={setsInputRef} type="number" id="sets" defaultValue="2"/>
-        <input type="submit" value="submit" />
-        <hr />
-        <label htmlFor="title">Add Exercises</label>
-        <p>Add each excerise on it's own line, with a line break between each title</p>
-        <textarea onBlur={updatePreviewHandler} defaultValue="Squats&#10;Push Ups&#10;Pull Ups" cols="50" rows="20" ref={exerciseTitleRef}>
-      
-        </textarea>
-      </form>
-      <div>
-        <h2>Interval Timer Preview</h2>
+    <div className="container mx-auto">
+      <h1 className="text-5xl my-5 font-bold">New Timer</h1>
+      <div className="new-timer flex gap-10">
+        <form onSubmit={createTimerHandler}>
+          <div className="bg-transparentGreen rounded-md p-4 mb-8">
+            <div className="mb-5">
+              <label className="block mb-1 font-semibold" htmlFor="active">Active Interval</label>
+              <input className="py-1 px-2 w-16 text-black inline-block align-bottom" onBlur={updatePreviewHandler} ref={activeInputRef} type="number" id="active" defaultValue="40"/> seconds
+            </div>
+            <div className="mb-5">
+              <label className="block mb-1 font-semibold" htmlFor="rest">Rest Interval</label>
+              <input className="p-1 px-2 w-16 text-black inline-block align-bottom" onBlur={updatePreviewHandler} ref={restInputRef} type="number" id="rest" defaultValue="20"/> seconds
+            </div>
+          </div>
+          <div className="bg-transparentGreen rounded-md p-4 mb-8">
+            <div className="mb-5">
+              <label className="block mb-1 font-semibold" htmlFor="exercises"># of Exercises</label>
+              <input className="p-1 px-2 w-16 text-black inline-block align-bottom" onBlur={updatePreviewHandler} ref={exercisesInputRef} type="number" id="exercises" defaultValue="10"/>
+            </div>
+            <div className="mb-5">
+              <label className="block mb-1 font-semibold" htmlFor="sets">Sets per Exercise</label>
+              <input className="p-1 px-2 w-16 text-black inline-block align-bottom" onBlur={updatePreviewHandler} ref={setsInputRef} type="number" id="sets" defaultValue="2"/>
+            </div>
+            
+          </div>
+          <div className="bg-transparentGreen rounded-md p-4 mb-8">
+            <label className="block mb-1 font-semibold" htmlFor="title">Add Exercises</label>
+            <p>Add each exercise on it's own line, with a line break between each title</p>
+            <textarea className="mt-4 p-2 text-black" onBlur={updatePreviewHandler} defaultValue="Squats&#10;Push Ups&#10;Pull Ups" cols="30" rows="10" ref={exerciseTitleRef}>
+            </textarea>
+          </div>
+          <input className="px-5 py-2 bg-darkGreen white font-bold" type="submit" value="submit" />
+        </form>
         <div>
-  { preview && 
-    preview.map((a, i) => 
-      <div key={i}>{a.title} 
-        <input 
-          aria-label="set custom time" 
-          onChange={(e) => {updateTimeHandler(e, i)}} 
-          type="number" 
-          style={{width: '30px'}} 
-          defaultValue={a.time}/>{a.time}s <button onClick={() => {removeInterval(i)}}>X</button></div>) }
+          <h2 className="text-4xl font-bold mb-5">Interval Timer Preview</h2>
+          <div className="max-h-96 shadow-inner overflow-auto">
+          { preview && 
+            preview.map((a, i) => 
+                <div className="mb-4 bg-transparentGreen flex place-content-between items-center rounded-md p-4 mb-8" key={i}>
+                  <span>{a.title} </span>
+                  <span>
+                    <input
+                      aria-label="set custom time"
+                      onChange={(e) => {updateTimeHandler(e, i)}}
+                      type="number"
+                      className="ml-auto p-1 px-2 w-20 ml-2 mr-1 text-black"
+                      defaultValue={a.time}/>seconds <button onClick={() => {removeInterval(i)}}>X</button>
+                  </span>
+                </div>) }
+          </div>
         </div>
       </div>
     </div>

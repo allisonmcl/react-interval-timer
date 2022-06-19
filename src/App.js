@@ -25,7 +25,7 @@ function App() {
     
     <div className="App">
       <NewTimer setIntervals={setIntervalsHandler} />
-      <Timer intervals={intervals}/>
+      {/* <Timer intervals={intervals}/> */}
     </div>
   );
 }

@@ -89,16 +89,16 @@ const Timer = (props) => {
   const duration = intervals[timerState.currInterval].time;
   return (
     
-    <div className="timer">
-      <h1>{title}</h1>
-      <div className="circle">
-        <Button attributes={{disabled: isFirstInt , onClick: prevInt} }><FontAwesomeIcon size="lg" icon={solid('backward')} /></Button>
+    <div className="timer container text-center text-3xl m-auto my-20">
+      <h1 className="font-bold text-6xl mb-10">{title}</h1>
+      <div className="circle flex items-center mx-auto place-content-around my-5 max-w-sm">
+        <Button attributes={{disabled: isFirstInt , onClick: prevInt} }><FontAwesomeIcon size="2xs" icon={solid('backward')} /></Button>
 
         <CountdownCircleTimer
           isPlaying={!timerState.paused}
           duration={duration}
           key={timerState.currInterval}
-          trailColor={'#00A77D'}
+          trailColor={'rgba(0,59,44, 0.3)'}
           colors={['#FFF']}
           onComplete={() => {
             audio.play();
@@ -113,11 +113,25 @@ const Timer = (props) => {
         >
           {({ remainingTime }) => remainingTime}
         </CountdownCircleTimer>
-        <Button attributes={{disabled: isLastActive , onClick: nextInt} }><FontAwesomeIcon icon={solid('forward')} /></Button>
+        <Button 
+          attributes={{disabled: isLastActive , onClick: nextInt} }>
+            <FontAwesomeIcon 
+            size="2xs" 
+            icon={solid('forward')} />
+        </Button>
       </div>
 
-      <Button attributes={{disabled: isRunning , onClick: timerStart} }><FontAwesomeIcon icon={solid('play')} /></Button>
-      <Button attributes={{disabled: !isRunning , onClick: timerPause} }><FontAwesomeIcon icon={solid('pause')} /></Button>
+      <Button 
+        attributes={{hidden: isRunning , onClick: timerStart} }>
+          <FontAwesomeIcon 
+          size="2xs" 
+          icon={solid('play')} /></Button>
+      <Button 
+        attributes={{hidden: !isRunning , onClick: timerPause} }>
+          <FontAwesomeIcon 
+          size="2xs" 
+          icon={solid('pause')} />
+        </Button>
 
       <TotalTimer elapsedTime={timerState.totalElapsedTime} totalDuration={totalDuration} />
     </div>

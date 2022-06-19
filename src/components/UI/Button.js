@@ -6,7 +6,7 @@ const Button = (props) => {
   return (
     <button 
       {...props.attributes}
-      className={classes.iconbtn}>
+      className="border-0 text-white w-12 h-12 m-2 rounded-full bg-darkGreen">
       {props.children}
     </button>
   )

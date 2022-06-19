@@ -1,8 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   color: #fff;
-  text-align: center;
   margin: 0;
-  font-family: 'Futura', 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,15 +13,10 @@ body {
   background: rgb(22,140,111);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .test1 {
   width: 300px;
   height: 30px;
-  background: white;
+  background: rgba(0,59,44, 0.3);
   margin: 1em auto;
   border-radius: 10px;
   overflow: hidden;
@@ -26,23 +24,10 @@ code {
 
 .test {
   height: 30px;
-  background: rgb(0,59,44);
+  background: white;
   transition: width 300ms linear;
 }
 
 svg {
   margin: auto;
-}
-
-.circle {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  max-width: 400px;
-  margin: 0 auto;
-  font-size: 30px;
-}
-
-.circle > div {
-  text-align: center;
 }
