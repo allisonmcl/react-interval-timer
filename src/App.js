@@ -1,31 +1,24 @@
-import Timer from './components/Timer';
-import NewTimer from './components/NewTimer';
-import {useState} from 'react';
+import Timer from './pages/Timer';
+import NewTimer from './pages/NewTimer';
+import AllTimers from './pages/AllTimers';
 import './App.css';
+import { Routes, Route, Link } from "react-router-dom";
+import EditTimer from './pages/EditTimer';
 function App() {
-  const [intervals, setIntervals] = useState([
-    {
-      time: 4,
-      title: 'Squats'
-    },
-    {
-      time: 5,
-      title: 'Squats 2'
-    },
-    {
-      time: 6,
-      title: 'Squats 3'
-    }
-  ]);
-
-  const setIntervalsHandler = (arr) => {
-    setIntervals(arr)
-  }
   return (
     
     <div className="App">
-      <NewTimer setIntervals={setIntervalsHandler} />
-      {/* <Timer intervals={intervals}/> */}
+       <nav>
+        <Link to="/">All Timers</Link>
+        <Link to="/new-timer">New Timer</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<AllTimers/>} />
+        <Route path="/new-timer" element={<NewTimer />} />
+        <Route path="timer/:id" element={<Timer  />} /> 
+        <Route path="edit/:id" element={<EditTimer  />} /> 
+      </Routes> 
+     
     </div>
   );
 }

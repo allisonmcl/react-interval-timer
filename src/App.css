@@ -1,0 +1,32 @@
+.shadow-inner {
+  background:
+  /* Shadow Cover TOP */
+  linear-gradient(
+    rgb(45 246 181) 30%,
+    rgba(255, 255, 255, 0)
+  ) center top,
+  
+  /* Shadow Cover BOTTOM */
+  linear-gradient(
+    rgba(255, 255, 255, 0), 
+    rgb(45 246 181) 70%
+  ) center bottom,
+  
+  /* Shadow TOP */
+  radial-gradient(
+    farthest-side at 50% 0,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  ) center top,
+  
+  /* Shadow BOTTOM */
+  radial-gradient(
+    farthest-side at 50% 100%,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  ) center bottom;
+
+background-repeat: no-repeat;
+background-size: 120% 55px, 120% 55px, 120% 55px, 120% 55px;
+background-attachment: local, local, scroll, scroll;
+}

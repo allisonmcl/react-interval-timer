@@ -8,12 +8,15 @@ const formatSeconds = (time) => {
 }
 
 const TotalTimer = (props) => {
-  const width = props.elapsedTime / props.totalDuration * 100;
+  console.log('total Timer Loaded')
+  const percentageComplete = props.elapsedTime / props.totalDuration * 100;
   return (
     <div className="mt-10">
-      <span className="text-xl">{formatSeconds(props.elapsedTime) +'/'+ formatSeconds(props.totalDuration)}</span>
-      <div className="mt-4 h-3 bg-darkGreen mt-10 mx-auto rounded-md">
-        <div className="h-3 bg-white rounded-md transition-width linear duration-300" style={{width: width + '%'}}></div>
+      <div className="text-xl text-left">{formatSeconds(props.elapsedTime) +' / '+ formatSeconds(props.totalDuration)}
+      <span className="float-right">{Math.floor(percentageComplete)}%</span>
+      </div>
+      <div className="mt-1 h-3 bg-darkGreen mt-10 mx-auto rounded-md">
+        <div className="h-3 bg-white rounded-md transition-width linear duration-300" style={{width: percentageComplete + '%'}}></div>
       </div>
     </div>
   )

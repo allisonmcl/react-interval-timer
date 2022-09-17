@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 body {
-  color: #fff;
+  color: #000;
   margin: 0;
   font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(22,140,111);
+  background: rgb(45 246 181);
 }
 
 .test1 {

@@ -4,15 +4,22 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'green': 'rgb(22,140,111)',
+      'green': 'rgb(45 246 181)',
       'darkGreen': 'rgb(0,59,44)',
       'black': 'rgb(0,0,0)',
       'white': 'rgb(255,255,255)',
       'transparentGreen': 'rgba(0,59,44, 0.3)',
+      
+    },
+    backgroundSize: {
+      sizelines: '100% 2em',
     },
     extend: {
       transitionProperty: {
         'width': 'width',
+      },
+      backgroundImage: {
+        'lines': 'linear-gradient(180deg, rgba(255,255,255,0) 98%, rgba(9,9,121,1) 99%)'
       }
     }
   },

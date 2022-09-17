@@ -1,4 +1,3 @@
-import classes from './Button.module.scss';
 import React from 'react';
 
 const Button = (props) => {
@@ -6,7 +5,7 @@ const Button = (props) => {
   return (
     <button 
       {...props.attributes}
-      className="border-0 text-white w-12 h-12 m-2 rounded-full bg-darkGreen">
+      className="disabled:opacity-25 border-0 text-white min-w-12 min-h-12 m-2 p-4 rounded-full bg-darkGreen">
       {props.children}
     </button>
   )
